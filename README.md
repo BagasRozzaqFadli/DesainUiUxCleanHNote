@@ -1,4 +1,4 @@
-# Lofi App — README
+# CleanHNote App — Lo-fi
 
 ## Tentang Proyek
 "Lo-fi" di sini berarti **low-fidelity prototype**. Prototipe awal aplikasi berbasis **HTML, CSS, dan JavaScript** untuk sistem manajemen tugas & tim sederhana. Belum ada backend, semua data disimpan di **LocalStorage** browser.
@@ -24,9 +24,9 @@ CleanHNote UI-UX/
 ## Cara Menjalankan
 
 ### Buka langsung di browser
-- Masukkan link `https://bagasrozzaqfadli.github.io/DesainUiUxCleanHNote/` ad.
+- Masukkan link `https://bagasrozzaqfadli.github.io/DesainUiUxCleanHNote/` di browser.
 - Login dengan akun:
-  - **Premium**: `User1@gmail.com` / `user12345`
+  - **Premium**: Email `User1@gmail.com` / Password `user12345`
   - **Free**: daftar dulu via halaman **Register**
 
 ---
@@ -44,7 +44,7 @@ CleanHNote UI-UX/
 - Bisa **membuat tim** & membagikan kode undangan.
 - Bisa **mengundang anggota**.
 - Bisa membuat **tugas untuk anggota tim**.
-- Halaman **Info Tim**, **Progress Tim**, dan **Laporan Kinerja Tim**.
+- **(Belum ada untuk versi lo-fi ini)** Halaman **Info Tim**, **Progress Tim**, dan **Laporan Kinerja Tim**.
 
 ---
 
@@ -54,5 +54,3 @@ CleanHNote UI-UX/
 - UI ini masih low-fidelity, bisa ditingkatkan dengan framework UI (Tailwind, Bootstrap) atau dipindah ke framework modern (Vue, React, Nuxt, Next).
 
 ---
-
-Dengan README ini, siapa pun yang membuka repo di GitHub akan langsung paham bahwa **lofi adalah prototipe low-fidelity** untuk aplikasi manajemen tugas & tim.
