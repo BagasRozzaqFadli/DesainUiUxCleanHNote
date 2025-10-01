@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CleanHNote</title>
+
+    <!-- Tailwind CDN (untuk prototyping cepat) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-50">
+
+    <div id="app-container" class="max-w-md mx-auto min-h-screen bg-white shadow-lg">
+
+        <!-- Halaman Login -->
+        <div id="login-page" class="page active">
+            <div class="p-6 flex flex-col justify-center min-h-screen bg-purple-50">
+                <div class="text-center mb-10">
+                    <div class="inline-block p-4 bg-purple-600 text-white rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h1 class="text-3xl font-bold text-gray-800">CleanHNote</h1>
+                    <p class="text-gray-500 mt-2">Kelola tugas dengan lebih efisien</p>
+                </div>
+                <form id="login-form">
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-600 mb-1">Email</label>
+                        <div class="relative">
+                             <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
+                            </span>
+                            <input type="email" id="email" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500" placeholder="Masukkan email Anda" required>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block text-sm font-medium text-gray-600 mb-1">Password</label>
+                         <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" /></svg>
+                            </span>
+                            <input type="password" id="password" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition-colors">Login</button>
+                </form>
+                <p class="text-center text-gray-600 mt-6">
+                    Belum punya akun? <a href="#" id="show-register" class="text-purple-600 font-semibold hover:underline">Daftar</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Halaman Register (modal style) -->
+        <div id="register-page" class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-2xl p-6 transform translate-y-full transition-transform duration-300">
+             <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold text-gray-800">Buat Akun Baru</h1>
+                <p class="text-gray-500 mt-2">Selamat datang di CleanHNote!</p>
+            </div>
+            <form id="register-form">
+                <div class="mb-4">
+                    <label for="reg-username" class="block text-sm font-medium text-gray-600 mb-1">Username</label>
+                    <input type="text" id="reg-username" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500" placeholder="Masukkan username Anda" required>
+                </div>
+                <div class="mb-4">
+                    <label for="reg-email" class="block text-sm font-medium text-gray-600 mb-1">Email</label>
+                    <input type="email" id="reg-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500" placeholder="Masukkan email Anda" required>
+                </div>
+                <div class="mb-6">
+                    <label for="reg-password" class="block text-sm font-medium text-gray-600 mb-1">Password</label>
+                    <input type="password" id="reg-password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500" placeholder="Buat password" required>
+                </div>
+                <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition-colors">Register</button>
+            </form>
+            <p class="text-center text-gray-600 mt-6">
+                Sudah punya akun? <a href="#" id="back-to-login" class="text-purple-600 font-semibold hover:underline">Login</a>
+            </p>
+        </div>
+        
+        <!-- Halaman Dashboard -->
+        <div id="dashboard-page" class="page">
+            <header class="p-4 flex justify-between items-center border-b bg-white sticky top-0 z-10">
+                <h1 id="dashboard-title" class="text-xl font-bold text-gray-800">CleanHNote</h1>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-500" onclick="showPage('notifications-page')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    </button>
+                    <button class="text-gray-500" id="logout-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                    </button>
+                </div>
+            </header>
+
+            <main class="p-6 bg-gray-50">
+                <!-- Notifikasi -->
+                <div id="welcome-notification" class="p-4 rounded-lg bg-green-100 text-green-800 mb-6">
+                    <h3 class="font-bold">Selamat datang!</h3>
+                    <p class="text-sm">Nikmati semua fitur eksklusif CleanHNote!</p>
+                </div>
+
+                <!-- Akses Cepat -->
+                <div class="mb-8">
+                    <h2 class="text-lg font-semibold text-gray-700 mb-3">Akses Cepat</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="showPage('personal-tasks-page')" class="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:bg-gray-100 transition">
+                            <div class="p-3 bg-blue-100 rounded-full mb-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg></div>
+                            <span class="font-semibold text-gray-700">Tugas Pribadi</span>
+                        </button>
+                        <button onclick="showPage('team-page')" class="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:bg-gray-100 transition">
+                            <div class="p-3 bg-green-100 rounded-full mb-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" /></svg></div>
+                            <span class="font-semibold text-gray-700">Tim Saya</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tugas Pribadi Terbaru -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-lg font-semibold text-gray-700">Tugas Pribadi Terbaru</h2>
+                        <a href="#" onclick="showPage('personal-tasks-page')" class="text-sm font-medium text-purple-600">Lihat Semua</a>
+                    </div>
+                    <div id="latest-tasks" class="bg-white p-4 rounded-lg shadow-sm text-center text-gray-500">
+                        Belum ada tugas aktif.
+                    </div>
+                </div>
+
+                <!-- Tim Saya -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-lg font-semibold text-gray-700">Tim Saya</h2>
+                        <a href="#" onclick="showPage('team-page')" class="text-sm font-medium text-purple-600">Lihat Semua</a>
+                    </div>
+                    <div id="my-teams-summary" class="bg-white p-4 rounded-lg shadow-sm text-center text-gray-500">
+                        Belum ada tim.
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Halaman Tugas Pribadi -->
+        <div id="personal-tasks-page" class="page relative">
+            <header class="p-4 flex items-center border-b bg-white sticky top-0 z-10">
+                <button class="mr-4 text-gray-600" onclick="showPage('dashboard-page')"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg></button>
+                <h1 class="text-xl font-bold text-gray-800">Tugas Saya</h1>
+            </header>
+            <main id="personal-tasks-list" class="p-6 bg-gray-50 pb-24">
+                <!-- Daftar tugas akan muncul di sini -->
+                <div class="text-center text-gray-500 mt-16">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                    <p class="mt-4">Belum ada tugas</p>
+                    <p class="text-sm">Tambahkan tugas baru dengan menekan tombol + di bawah</p>
+                </div>
+            </main>
+            <button onclick="showModal('add-task-modal')" class="absolute bottom-6 right-6 bg-purple-600 text-white rounded-full p-4 shadow-lg hover:bg-purple-700 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+            </button>
+        </div>
+        
+        <!-- Halaman Tim -->
+        <div id="team-page" class="page">
+             <header class="p-4 flex items-center border-b bg-white sticky top-0 z-10">
+                <button class="mr-4 text-gray-600" onclick="showPage('dashboard-page')"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg></button>
+                <h1 class="text-xl font-bold text-gray-800">Tim Saya</h1>
+            </header>
+            <main class="p-6 bg-gray-50 text-center">
+                <div id="team-list" class="space-y-4">
+                    <!-- Daftar tim akan muncul di sini -->
+                </div>
+                 <div id="no-team-view" class="mt-16">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-300" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" /></svg>
+                    <h2 class="text-xl font-semibold mt-4">Belum Ada Tim</h2>
+                    <p class="text-gray-500 mt-2">Anda belum memiliki atau bergabung dengan tim manapun.</p>
+                </div>
+                <div class="mt-8 space-y-3">
+                    <button id="create-team-button" onclick="showModal('create-team-modal')" class="w-full max-w-xs mx-auto bg-white border border-gray-300 text-gray-700 font-semibold py-3 rounded-lg hover:bg-gray-100 transition">Buat Tim Baru</button>
+                    <button onclick="showModal('join-team-modal')" class="w-full max-w-xs mx-auto bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition">Gabung dengan Tim</button>
+                </div>
+            </main>
+        </div>
+        
+        <!-- Notifikasi -->
+        <div id="notifications-page" class="page">
+             <header class="p-4 flex items-center border-b bg-white sticky top-0 z-10">
+                <button class="mr-4 text-gray-600" onclick="showPage('dashboard-page')"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg></button>
+                <h1 class="text-xl font-bold text-gray-800">Notifikasi</h1>
+            </header>
+            <main class="p-6 bg-gray-50 text-center">
+                 <div class="mt-16 text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-5-5.341V5a2 2 0 10-4 0v.659A6.002 6.002 0 005 11v3.159c0 .538-.214 1.055-.595 1.436L3 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <h2 class="text-xl font-semibold mt-4">Tidak ada notifikasi</h2>
+                    <p class="mt-2">Anda tidak memiliki tugas yang mendekati tenggat waktu</p>
+                </div>
+            </main>
+        </div>
+
+        <!-- Halaman Info Tim -->
+        <div id="team-info-page" class="page">
+             <header class="p-4 flex items-center border-b bg-white sticky top-0 z-10">
+                <button class="mr-4 text-gray-600" onclick="showPage('team-page')"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg></button>
+                <h1 id="team-info-name" class="text-xl font-bold text-gray-800">Info Tim</h1>
+            </header>
+            <main class="p-6 bg-gray-50">
+                <div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-lg font-semibold mb-3">Informasi Tim</h3>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <p><strong>Nama:</strong> <span id="team-info-detail-name"></span></p>
+                        <p><strong>Deskripsi:</strong> <span id="team-info-detail-desc"></span></p>
+                        <p><strong>Pembuat:</strong> <span id="team-info-owner"></span></p>
+                        <p><strong>Jumlah Anggota:</strong> <span id="team-info-members-count"></span></p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+                     <h3 class="text-lg font-semibold mb-3">Anggota Tim</h3>
+                     <div id="team-members-list" class="space-y-3">
+                        <!-- Daftar Anggota Tim -->
+                     </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-lg font-semibold mb-3">Tugas Tim</h3>
+                    <div id="team-tasks-list" class="text-center text-gray-500 py-4">Belum ada tugas untuk tim ini.</div>
+                    <button id="add-team-task-btn" onclick="showModal('assign-team-task-modal')" class="w-full mt-4 bg-green-500 text-white font-semibold py-2 rounded-lg hover:bg-green-600 transition">Tambah Tugas Tim</button>
+                </div>
+
+                <div class="mt-8">
+                     <button id="invite-code-btn" onclick="showModal('invite-code-modal')" class="w-full bg-blue-500 text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition mb-3">
+                        Lihat Kode Undangan
+                    </button>
+                    <button id="delete-team-btn" class="w-full bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-600 transition">Hapus Tim</button>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+    <!-- Modals & Backdrop -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    
+    <!-- Modal: Tambah Tugas Pribadi -->
+    <div id="add-task-modal" class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-2xl p-6 transform translate-y-full transition-transform duration-300">
+        <h2 class="text-xl font-bold mb-4">Buat Tugas Baru</h2>
+        <form id="add-task-form">
+            <div class="mb-3">
+                <label for="task-title" class="text-sm font-medium text-gray-600">Judul Tugas</label>
+                <input type="text" id="task-title" class="w-full mt-1 p-2 border rounded-md" required>
+            </div>
+            <div class="mb-3">
+                <label for="task-desc" class="text-sm font-medium text-gray-600">Deskripsi</label>
+                <textarea id="task-desc" rows="3" class="w-full mt-1 p-2 border rounded-md"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="task-level" class="text-sm font-medium text-gray-600">Level Prioritas</label>
+                <select id="task-level" class="w-full mt-1 p-2 border rounded-md">
+                    <option value="Rendah">Rendah</option>
+                    <option value="Sedang" selected>Sedang</option>
+                    <option value="Tinggi">Tinggi</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="task-date" class="text-sm font-medium text-gray-600">Tanggal Tugas</label>
+                <input type="date" id="task-date" class="w-full mt-1 p-2 border rounded-md" required>
+            </div>
+            <div class="flex gap-3">
+                <button type="button" onclick="closeModal('add-task-modal')" class="w-full py-2 bg-gray-200 rounded-md">Batal</button>
+                <button type="submit" class="w-full py-2 bg-purple-600 text-white rounded-md">Simpan Tugas</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal: Buat Tim -->
+    <div id="create-team-modal" class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-2xl p-6 transform translate-y-full transition-transform duration-300">
+        <h2 class="text-xl font-bold mb-4">Buat Tim Baru</h2>
+        <form id="create-team-form">
+            <div class="mb-3">
+                <label for="team-name" class="text-sm font-medium text-gray-600">Nama Tim</label>
+                <input type="text" id="team-name" class="w-full mt-1 p-2 border rounded-md" required>
+            </div>
+            <div class="mb-6">
+                <label for="team-desc" class="text-sm font-medium text-gray-600">Deskripsi</label>
+                <textarea id="team-desc" rows="3" class="w-full mt-1 p-2 border rounded-md"></textarea>
+            </div>
+             <div class="flex gap-3">
+                <button type="button" onclick="closeModal('create-team-modal')" class="w-full py-2 bg-gray-200 rounded-md">Batal</button>
+                <button type="submit" class="w-full py-2 bg-purple-600 text-white rounded-md">Buat Tim</button>
+            </div>
+        </form>
+    </div>
+
+     <!-- Modal: Gabung Tim -->
+    <div id="join-team-modal" class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-2xl p-6 transform translate-y-full transition-transform duration-300">
+        <h2 class="text-xl font-bold mb-4">Gabung dengan Tim</h2>
+        <p class="text-gray-600 mb-4">Masukkan kode undangan untuk bergabung dengan tim.</p>
+        <form id="join-team-form">
+            <div class="mb-6">
+                <label for="invite-code" class="text-sm font-medium text-gray-600">Kode Undangan</label>
+                <input type="text" id="invite-code" class="w-full text-center tracking-widest font-mono uppercase mt-1 p-2 border rounded-md" placeholder="XXXXXX" required>
+            </div>
+             <div class="flex gap-3">
+                <button type="button" onclick="closeModal('join-team-modal')" class="w-full py-2 bg-gray-200 rounded-md">Batal</button>
+                <button type="submit" class="w-full py-2 bg-purple-600 text-white rounded-md">Gabung Tim</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal: Kode Undangan -->
+    <div id="invite-code-modal" class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-2xl p-6 transform translate-y-full transition-transform duration-300 text-center">
+        <h2 class="text-xl font-bold mb-2">Kode Undangan</h2>
+        <p class="text-gray-600 mb-4">Bagikan kode ini kepada anggota tim:</p>
+        <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-between mb-4">
+            <span id="generated-invite-code" class="text-2xl font-bold tracking-widest text-gray-800"></span>
+            <button onclick="copyInviteCode()" class="text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+            </button>
+        </div>
+        <button type="button" onclick="closeModal('invite-code-modal')" class="w-full max-w-xs mx-auto py-2 bg-gray-200 rounded-md">Tutup</button>
+    </div>
+
+    <!-- Modal: Assign Tugas Tim -->
+    <div id="assign-team-task-modal" class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-2xl p-6 transform translate-y-full transition-transform duration-300">
+        <h2 class="text-xl font-bold mb-4">Beri Tugas ke Anggota</h2>
+        <form id="assign-team-task-form">
+            <div class="mb-3">
+                <label for="team-task-title" class="text-sm font-medium text-gray-600">Judul Tugas</label>
+                <input type="text" id="team-task-title" class="w-full mt-1 p-2 border rounded-md" required>
+            </div>
+            <div class="mb-3">
+                <label for="team-task-desc" class="text-sm font-medium text-gray-600">Deskripsi</label>
+                <textarea id="team-task-desc" rows="3" class="w-full mt-1 p-2 border rounded-md"></textarea>
+            </div>
+            <div class="mb-3">
+                 <label for="assign-to-member" class="text-sm font-medium text-gray-600">Tugaskan Untuk</label>
+                <select id="assign-to-member" class="w-full mt-1 p-2 border rounded-md">
+                    <!-- Anggota tim akan ditambahkan di sini oleh JS -->
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="team-task-date" class="text-sm font-medium text-gray-600">Tanggal Tugas</label>
+                <input type="date" id="team-task-date" class="w-full mt-1 p-2 border rounded-md" required>
+            </div>
+            <div class="flex gap-3">
+                <button type="button" onclick="closeModal('assign-team-task-modal')" class="w-full py-2 bg-gray-200 rounded-md">Batal</button>
+                <button type="submit" class="w-full py-2 bg-purple-600 text-white rounded-md">Beri Tugas</button>
+            </div>
+        </form>
+    </div>
+
+     <!-- Modal: View/Update Task Status -->
+    <div id="view-task-modal" class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-2xl p-6 transform translate-y-full transition-transform duration-300">
+        <div id="view-task-content">
+            <!-- Content will be injected by JS -->
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- App script -->
+    <script src="script.js"></script>
+</body>
+</html>

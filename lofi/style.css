@@ -1,0 +1,54 @@
+/* style.css - custom rules moved dari <style> internal */
+
+/* gunakan font Inter (dideklarasikan di index.html) */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Halaman (views) */
+.page {
+    display: none;
+    animation: fadeIn 0.18s ease-in-out;
+    min-height: 100vh;
+}
+.page.active {
+    display: block;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Toast */
+.toast {
+    animation: slideInUp 0.28s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+/* slide up */
+@keyframes slideInUp {
+    from { transform: translate(-50%, 100px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* fade out + keep UI consistent */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* task state */
+.task-done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+.task-cancelled {
+    opacity: 0.5;
+}
