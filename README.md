@@ -1,5 +1,14 @@
 # CleanHNote App — Lo-fi
 
+---
+
+### Informasi Tim
+- **Nama Kelompok**: Bagas Rozzaq Fadli (221240001280) & Muhammad Alif Nur Hanif (221240001276)
+- **Mata Kuliah**: Pemrograman Mobile Lanjut
+- **Tanggal**: September 2025
+
+---
+
 ## Tentang Proyek
 "Lo-fi" di sini berarti **low-fidelity prototype**. Prototipe awal aplikasi berbasis **HTML, CSS, dan JavaScript** untuk sistem manajemen tugas & tim sederhana. Belum ada backend, semua data disimpan di **LocalStorage** browser.
 
