@@ -50,7 +50,7 @@ CleanHNote UI-UX/
 
 ## Catatan
 - Semua data (akun, tugas, tim) masih dummy → disimpan di LocalStorage.
-- Jika ingin dikembangkan serius: tambahkan backend (misalnya **Laravel, Express.js, atau Appwrite**).
+- Jika ingin dikembangkan serius: tambahkan backend (misalnya **Laravel, Express.js,firebase atau Appwrite**).
 - UI ini masih low-fidelity, bisa ditingkatkan dengan framework UI (Tailwind, Bootstrap) atau dipindah ke framework modern (Vue, React, Nuxt, Next).
 
 ---
